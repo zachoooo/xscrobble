@@ -12,6 +12,7 @@ xScrobble is a stupidly simple Last.fm CLI made in python.
 
 * [About the Project](#about-the-project)
   * [Built With](#built-with)
+* [Usage](#usage)
 * [Installation](#installation)
 * [License](#license)
 * [Acknowledgements](#acknowledgements)
@@ -27,6 +28,14 @@ Problem solved! I use Plex with Tautulli personally, but this should be able to 
 ### Built With
 
 * [Python 3.8](https://www.python.org/)
+
+## Usage
+
+Ok so lets say you have two bros who live together named Zach and Scott. *The bois* are listening to music using a single music player which plays the music out loud using speakers. Both of them want to scrobble the songs to their respective Last.fm page. To do this, we would add Zach and Scott as regular users and then we could create a macro user called Household. We then assign Zach and Scott to the Household macro user. Once this is done, scrobbling to Household will scrobble the track for both users.
+
+Now lets take it a step further. Lets say *the bois* are planning a get together with *the squad* and everyone in *the squad* wants to listen to music using a single player and scrobble it to everyone. We can add all of the other members of *the squad* as regular users and then create a macro user called TheSquad. We will also add the Household macro user to TheSquad macro user and now scrobbling TheSquad will scrobble for everyone.
+
+You can make this as complicated as you want.
 
 ## Installation
 

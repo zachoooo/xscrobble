@@ -108,7 +108,6 @@ def api(key, secret):
 @click.argument("macro")
 @click.argument("username")
 def add_macro(macro, username):
-    print(get_config()["users"])
     macro_user = get_user(macro)
     sub_user = get_user(username)
     if macro is None:
@@ -124,9 +123,7 @@ def add_macro(macro, username):
         print(f"The user {username} is already macro'd by {macro}")
         return
     macro_user.macro_users.append(username)
-    print(get_config()["users"])
     save_config()
-    print(get_config()["users"])
     print("Macro user successfully added")
     pass
 

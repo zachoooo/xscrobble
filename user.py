@@ -5,7 +5,7 @@ class User():
         self.username = ""
         self.session_key = ""
         self.is_macro = False
-        self.macro_users = list[str]
+        self.macro_users = []
 
     def __str__(self):
         return self.username

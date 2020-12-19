@@ -149,6 +149,27 @@ def process_scrobble(username, artist, album, track):
 def scrobble(username, artist, album, track):
     process_scrobble(username, artist, album, track)
 
+
+def process_now_playing(username, artist, album, track):
+    user = get_user(username)
+    if user is None:
+        print(f"No user called {username} found.")
+        return
+    if user.is_macro:
+        for muser in user.macro_users:
+            process_now_playing(muser, artist, album, track)
+    else:
+        network = pylast.LastFMNetwork(api_key=get_config()["API_KEY"], api_secret=get_config()["API_SECRET"], username=user.username, session_key=user.session_key)
+        network.update_now_playing(artist, track, album=album)
+
+@main.command()
+@click.argument("username", type=str)
+@click.argument("artist", type=str)
+@click.argument("album", type=str)
+@click.argument("track", type=str)
+def now_playing(username, artist, album, track):
+    process_now_playing(username, artist, album, track)
+
 def load_config():
     global config, config_loaded
     if not os.path.exists(FILE_NAME):

@@ -170,6 +170,23 @@ def process_now_playing(username, artist, album, track):
 def now_playing(username, artist, album, track):
     process_now_playing(username, artist, album, track)
 
+
+@main.command()
+@click.argument("username", type=str)
+def remove(username):
+    user = get_user(username)
+    if user is None:
+        print(f"No user called {username} found.")
+        return
+    get_config()["users"].remove(user)
+    for user in get_config()["users"]:
+        if username in user.macro_users:
+            print(f"User {username} removed from macro user {user.username}")
+            user.macro_users.remove(username)
+    print(f"Successfully removed user {username}.")
+    save_config()
+
+
 def load_config():
     global config, config_loaded
     if not os.path.exists(FILE_NAME):
